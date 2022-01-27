@@ -38,7 +38,6 @@ function CheckoutForm() {
         console.log(paymentMethod)
         if (!error) {
 
-            console.log("Stripe 23 | token generated!", paymentMethod);
             try {
                 const { id } = paymentMethod;
                 const response = await axios.post(
@@ -49,10 +48,6 @@ function CheckoutForm() {
                     }
                 );
 
-                console.log("Stripe 35 | data", response.data.success);
-                if (response.data.success) {
-                    console.log("CheckoutForm.js 25 | payment successful!");
-                }
             } catch (error) {
                 console.log("CheckoutForm.js 28 | ", error);
             }

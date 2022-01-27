@@ -1,0 +1,15 @@
+.form{
+    padding: 1em;
+    box-shadow: 1px 1px 1px rgb(59, 53, 53);
+}
+
+.buttonForm{
+    width: 100%;
+    padding: 1em;
+    margin-top: 1em;
+    background-color: rgb(241, 162, 52);
+}
+
+.form-card{
+    padding: 1em;
+}

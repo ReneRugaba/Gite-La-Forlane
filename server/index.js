@@ -1,10 +1,12 @@
 const express = require("express")
 const app = express()
 require("dotenv").config()
+const fs = require("fs")
 const stripe = require("stripe")(process.env.STRIPE_SECRET_TEST)
 const bodyParser = require("body-parser")
 const cors = require("cors")
 const nodemailer = require("nodemailer")
+const handlerbar = require("handlebars")
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
@@ -36,12 +38,19 @@ app.post("/stripe/charge", cors(), async (req, res) => {
             }
         });
 
+       
+        let source=fs.readFileSync(__dirname+'/templates/mailTest.html','utf8').toString()
+        let template = handlerbar.compile(source)
+        let htmltosend = template({name:"Marie"})
+
+        
+        
         // mail options
         let mailoptions = {
-            from: 'renerugaba38@gmail.com',
+            from: process.env.EMAIL,
             to: 'rugabarj@hotmail.fr',
             subject: 'test',
-            text: 'work very well!!!'
+            html:htmltosend
         }
 
         // send mail

@@ -119,20 +119,43 @@
 }
 
 
-@media screen and (max-width: 520px) {
-    .form-reservation {
-        width: 90%;
-    }
-}
 
 @media screen and (max-width: 600px) {
+    .form-reservation {
+        width: 100%;
+    }
+}
+@media screen and (min-width: 601px) {
     .form-reservation {
         width: 80%;
     }
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (min-width: 950px) {
     .form-reservation {
         width: 70%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .form-reservation {
+        width: 60%;
+    }
+}
+@media screen and (min-width: 1450px) {
+    .form-reservation {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .form-reservation {
+        width: 40%;
+    }
+}
+
+@media screen and (min-width: 1750px) {
+    .form-reservation {
+        width: 35%;
     }
 }

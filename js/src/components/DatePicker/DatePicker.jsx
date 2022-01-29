@@ -30,7 +30,7 @@ const DatePicker = (props) => {
         dateFormat: 'MM/dd/yyyy',
         enableMonthSwitch: true,
         enableYearSwitch: true,
-        displayYearsCount: 1,
+        displayYearsCount: 1
     };
 
     useEffect( () => {
@@ -64,6 +64,7 @@ const DatePicker = (props) => {
                 data-display-mode="block" 
                 data-is-range="true" 
                 data-close-on-select="true"
+                showButtons="false"
             />
         </div>
     );

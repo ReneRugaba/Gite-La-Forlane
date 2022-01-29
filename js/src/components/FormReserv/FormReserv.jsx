@@ -9,7 +9,7 @@ import ZipCode from './Inputs/ZipCode';
 import City from './Inputs/City';
 import Phone from './Inputs/Phone';
 import Email from './Inputs/Email';
-
+import UserMessage from './Inputs/UserMessage';
 
 const FormReserv = () => {
 
@@ -71,8 +71,15 @@ const FormReserv = () => {
         console.log( email );
     }
 
+    const [message, setMessage] = useState('');
+    const setMessageState = ( messageToSet ) => {
+        setMessage( messageToSet )
+        console.log( message );
+    }
+
     return (
         <form onSubmit={ (e) => e.preventDefault() } className='form-reservation'>
+        <h1>{message}</h1>
             <DatePicker dateFunc={ setDateState }/>
             <Select number={ 10 }/>
             <FullName 
@@ -83,14 +90,14 @@ const FormReserv = () => {
             addressComplFunc={ setAddressComplState }/>      
             <ZipCode zipCodeFunc={ setZipCodeState } />     
             <City cityFunc={ setCityState } />
-            <Phone phoneFunc={ setPhone1State } label="Téléphone 1*" />
-            <Phone phoneFunc={ setPhone2State } label="Téléphone 2" />
-
-            <Email emailFunc={ setEmailState } />
-            
-            <label htmlFor="emailConfirm">Votre message</label> 
-            <textarea className='user-message' name='message'></textarea>
-            
+            <Phone 
+            phoneFunc={ setPhone1State } 
+            label="Téléphone 1*" />
+            <Phone 
+            phoneFunc={ setPhone2State } 
+            label="Téléphone 2" />
+            <Email emailFunc={ setEmailState } />         
+            <UserMessage messageFunc={ setMessageState } />       
             <input type="submit" className='btn-submit' value='Valider les informations'/>
         </form>
     );

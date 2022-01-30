@@ -12,14 +12,15 @@ const App =()=>{
         console.log(infoObj)
     } 
 
-    // const getFreshState = () => {
-    //     return userInfo;
-    // }
-
     return(
         <>
-            <StripeContainer/>
-            <FormReserv getUserInfo={ getUserInfo } />
+            
+            { !(Object.keys(userInfo).length == 13) && 
+                <FormReserv getUserInfo={ getUserInfo } />
+            }
+            { (Object.keys(userInfo).length == 13) && 
+                <StripeContainer/>
+            }
         </>
     );
 }

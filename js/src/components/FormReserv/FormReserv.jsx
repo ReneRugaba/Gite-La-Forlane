@@ -10,6 +10,7 @@ import City from './Inputs/City';
 import Phone from './Inputs/Phone';
 import Email from './Inputs/Email';
 import UserMessage from './Inputs/UserMessage';
+import { useEffect } from 'react/cjs/react.development';
 
 const FormReserv = ( props ) => {
 
@@ -83,6 +84,41 @@ const FormReserv = ( props ) => {
         // console.log( message );
     }
 
+    const [price, setPrice] = useState(0);
+    const setPriceState = ( priceToSet ) => {
+        setPrice( priceToSet )
+    }
+
+    //"01/30/2022 - 02/02/2022"
+
+    const applyPrice = ( date ) => {
+        const dateArr = date.split(' - ');
+        
+        if ( dateArr.length === 2 ) {
+            const startDate = dateArr[0];
+            const startDateArr = startDate.split('/');
+            const startDateMonth = startDateArr[0]
+            const startDateDay = startDateArr[1];
+            const startDateYear = startDateArr[2]
+
+            const endDate = dateArr[1];
+            const endDateArr = endDate.split('/');
+            const endDateMonth = endDateArr[0]
+            const endDateDay = endDateArr[1];
+            const endDateYear = endDateArr[2]
+
+            console.log(startDateArr);
+            console.log(endDateArr);
+            console.log( dateArr );
+        }
+    }
+
+    useEffect( () => {
+
+        applyPrice( date );
+
+    },[date])
+
     const checkUserInfo = (e) => {
         e.preventDefault();
 
@@ -100,7 +136,8 @@ const FormReserv = ( props ) => {
             phone1: phone1,
             phone2: phone2,
             email: email,
-            message: message
+            message: message,
+            price: price
         }
 
         for( let key of Object.keys( userInfo ) ){
@@ -119,7 +156,11 @@ const FormReserv = ( props ) => {
                     expectedInfo = false;
                     break;
                 }
-            } else if ( userInfo[key].length == 0 ) {
+            } else if ( key === 'price' &&  userInfo.price < 0 ) { // In the next time we Replace 0 by expected price 
+                alert("Une erreur c'est produite")
+                expectedInfo = false;
+                break;
+            }else if ( userInfo[key].length == 0 ) {
                 alert("Nous vous prions de bien vouloir nous fournir toutes les informations requises")
                     expectedInfo = false;
                     break;

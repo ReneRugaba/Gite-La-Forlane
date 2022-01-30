@@ -38,12 +38,12 @@ const DatePicker = (props) => {
         var calendars = bulmaCalendar.attach('[type="date"]', defaultOptions);
 
         // Loop on each calendar initialized
-        for(var i = 0; i < calendars.length; i++) {
-            // Add listener to select event
-            calendars[i].on('select', date => {
-                console.log(date);
-            });
-        }
+        // for(var i = 0; i < calendars.length; i++) {
+        //     // Add listener to select event
+        //     calendars[i].on('select', date => {
+        //         console.log(date);
+        //     });
+        // }
 
         // To access to bulmaCalendar instance of an element
         var element = document.querySelector('#date-picker');

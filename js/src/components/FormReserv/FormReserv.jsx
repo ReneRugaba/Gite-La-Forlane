@@ -90,8 +90,8 @@ const FormReserv = ( props ) => {
         setPrice( priceToSet )
     }
 
-    //"01/30/2022 - 02/02/2022"
-
+   
+     //"01/30/2022 - 02/02/2022"
     const applyPrice = ( date ) => {
         const dateArr = date.split(' - ');
 
@@ -114,9 +114,9 @@ const FormReserv = ( props ) => {
 
             */
 
-            console.log(startDateArr);
-            console.log(endDateArr);
-            console.log( dateArr );
+            // console.log(startDateArr);
+            // console.log(endDateArr);
+            // console.log( dateArr );
         }
     }
 

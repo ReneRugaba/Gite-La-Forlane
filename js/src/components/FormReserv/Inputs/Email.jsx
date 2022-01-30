@@ -49,6 +49,13 @@ const Email = ( props ) => {
             console.log(e.target.value);
         });
 
+        return () => {
+            document.querySelector('.email')
+            .removeEventListener('change');
+            document.querySelector('.emailConfirm')
+            .removeEventListener('change');
+        }
+
     },[emailOneIsOk, emailTwoIsOk])
 
     return (

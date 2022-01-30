@@ -85,7 +85,10 @@ const FormReserv = ( props ) => {
 
     const checkUserInfo = (e) => {
         e.preventDefault();
-        props.getUserInfo({
+
+        let expectedInfo = false;
+
+        const userInfo = {
             date: date,
             nbOfPersons: nbOfPersons,
             firstName: firstName,
@@ -98,7 +101,36 @@ const FormReserv = ( props ) => {
             phone2: phone2,
             email: email,
             message: message
-        });  
+        }
+
+        for( let key of Object.keys( userInfo ) ){
+            let isOptionalKey = false;
+            switch (key) {
+                case 'addressCompl':
+                case 'phone2':
+                    isOptionalKey = true;
+                break;               
+            }
+            if ( isOptionalKey ) {
+                continue;
+            } else if ( key === 'nbOfPersons') {
+                if ( userInfo.nbOfPersons < 1 || userInfo.nbOfPersons > 10 ) {
+                    alert("Une erreur c'est produite, nombre de personnes invalide")
+                    expectedInfo = false;
+                    break;
+                }
+            } else if ( userInfo[key].length == 0 ) {
+                alert("Nous vous prions de bien vouloir nous fournir toutes les informations requises")
+                    expectedInfo = false;
+                    break;
+            } else {
+                expectedInfo = true;
+            }
+        
+        }
+
+        if ( expectedInfo ) props.getUserInfo( userInfo ); 
+
     }
 
     return (

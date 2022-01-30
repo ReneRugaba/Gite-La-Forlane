@@ -14,6 +14,7 @@ const City = ( props ) => {
             props.cityFunc('');
         } else if ( e.target.value.length < 3 ) {
             setToggleCityErr(false)
+            props.cityFunc('');
         } else {
             setToggleCityErr(true)
             props.cityFunc(e.target.value);

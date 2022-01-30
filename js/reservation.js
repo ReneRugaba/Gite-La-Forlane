@@ -10,7 +10,7 @@ const App =()=>{
     const getUserInfo = ( infoObj ) => { // On submit
         setUserInfo( infoObj );
         console.log(infoObj)
-    }
+    } 
 
     // const getFreshState = () => {
     //     return userInfo;

@@ -19,9 +19,9 @@ const FullName = (props) => {
             setFirstNameComplete(false);
             setNameError('Que des lettres !');
             props.firstNameFunc('');
-        } else if (e.target.value.length < 2) {
+        } else if (e.target.value.length < 3) {
             setFirstNameComplete(false);
-            setNameError('Saisie invalide, minimum 2 lettres !');
+            setNameError('Saisie invalide !');
             props.firstNameFunc('');
         } else {
             setFirstNameComplete(true);
@@ -34,9 +34,9 @@ const FullName = (props) => {
             setLastNameComplete(false);
             setLastNameError('Que des lettres !')
             props.lastNameFunc('');
-        } else if (e.target.value.length < 2) {
+        } else if (e.target.value.length < 3) {
             setLastNameComplete(false);
-            setLastNameError('Saisie invalide, minimum 2 lettres !')
+            setLastNameError('Saisie invalide !')
             props.lastNameFunc('');
         } else {
             setLastNameComplete(true)

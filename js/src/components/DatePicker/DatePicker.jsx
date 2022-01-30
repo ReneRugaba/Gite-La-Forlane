@@ -64,7 +64,6 @@ const DatePicker = (props) => {
                 data-display-mode="block" 
                 data-is-range="true" 
                 data-close-on-select="true"
-                showButtons="false"
             />
         </div>
     );

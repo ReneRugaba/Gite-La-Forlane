@@ -12,10 +12,16 @@ const Select = (props) => {// props.number is the max of persons
         return optionsArr;
     }
 
+    const selectNbOfPersons = (e) => {
+        props.nbOfPersonsFunc( e.target.value );
+    }
+
     return (
         <div className='nbOfPersons-container'>
             <label form='nbOfPersons'>Nombre de personnes*</label>
-            <select name="nbOfPersons">
+            <select 
+            onChange={ selectNbOfPersons }
+            name="nbOfPersons">
                 {
                     <>
                         {getOption()}

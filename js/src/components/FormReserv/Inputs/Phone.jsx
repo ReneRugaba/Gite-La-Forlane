@@ -8,9 +8,10 @@ const Phone = ( props ) => {
         const phoneRegex = /(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})/;
         const userInput = e.target.value;
         if ( phoneRegex.test( userInput ) ) {
-            setTogglePhone( true )
+            setTogglePhone( true );
+            props.phoneFunc( e.target.value );
         } else {
-            setTogglePhone( false )
+            setTogglePhone( false );
         }
     }
 

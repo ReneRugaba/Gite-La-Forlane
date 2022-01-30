@@ -1,0 +1,161 @@
+.form-reservation {
+    width: 50%;
+    margin: 10% auto;
+    display: flex;
+    flex-direction: column;
+
+    background-color: rgb(245, 245, 245);
+    border-radius: 1em;
+    padding: 2% 0;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+
+    transition-duration: 500ms;
+}
+
+
+.form-reservation input {
+    width: 70%;
+    max-height: 40px;
+    min-height: 30px;
+    margin: auto;
+    margin-bottom: 0px;
+    font-size: 1.2em;
+    text-align: center;
+    outline: none;
+    border: 1px solid rgb(190, 190, 190); 
+    border-radius: 0.3em;
+    transition-duration: 500ms;
+}
+
+.form-reservation input:focus {
+    filter: drop-shadow(0 0 0.20rem lightgreen);
+    filter: drop-shadow(0 0 0.20rem lightblue);
+    border-color: lightblue;
+}
+
+/* for wrong user input  */
+.error-container{
+    width: 80%;
+    text-align: center;
+    color: #d9534f;
+    margin: 5px auto;
+    height: 15px;
+}
+.wrong-input {
+    filter: drop-shadow(0 0 0.20rem #d9534f);
+    border-color: #d9534f;
+}
+.form-reservation .wrong-input:focus {
+    filter: drop-shadow(0 0 0.20rem #d9534f);
+    border-color: #d9534f;
+}
+
+.form-reservation label {
+    width: 30%;
+    position: relative;
+    left: 15%;
+    text-align: left;
+    margin-top: 15px;
+    margin-bottom: 1%;
+}
+
+
+.form-reservation .user-name-inputs {
+    width: 70%;
+    margin: auto;
+    /* background-color: purple; */
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.form-reservation .user-name-inputs .user-name-input{
+    width: 48%;
+    position: relative;
+    text-align: left;
+}
+.form-reservation .user-name-inputs .user-name-input label{
+    top: -5%;
+    left: 1%;
+}
+.form-reservation .user-name-inputs .user-name-input input{
+    width: 95%;
+}
+
+
+.form-reservation textarea {
+    max-width: 70%;
+    min-width: 70%;
+    max-height: 250px;
+    min-height: 150px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.2em;
+    padding: 1%;
+    outline: none;
+    border: 1px solid rgb(190, 190, 190); 
+    border-radius: 1em;
+}
+
+
+.form-reservation .btn-submit {
+    /* max-width: 40%;
+    min-width: 40%; */
+    max-height: 70px;
+    min-height: 70px;
+    font-size: 1.5em;
+    font-weight: 600;
+    color: rgb(245, 245, 245);
+    background-color: #0275d8;
+    border: none;
+    border-radius: 2em;
+    cursor: pointer;
+    transition-duration: 400ms;
+    margin: 40px auto;
+}
+
+.form-reservation .btn-submit:hover {
+    background-color: rgb(51, 148, 233);
+
+}
+
+
+
+@media screen and (max-width: 600px) {
+    .form-reservation {
+        width: 100%;
+    }
+}
+@media screen and (min-width: 601px) {
+    .form-reservation {
+        width: 80%;
+    }
+}
+
+@media screen and (min-width: 950px) {
+    .form-reservation {
+        width: 70%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .form-reservation {
+        width: 60%;
+    }
+}
+@media screen and (min-width: 1450px) {
+    .form-reservation {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .form-reservation {
+        width: 40%;
+    }
+}
+
+@media screen and (min-width: 1750px) {
+    .form-reservation {
+        width: 35%;
+    }
+}

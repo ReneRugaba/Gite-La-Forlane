@@ -40,7 +40,6 @@ app.use('boostrap', express.static(__dirname + "/node_modules/bootstrap/dist/css
 //         prixUnJour: "prix unitaire sejour",
 //         prixHt: 0,
 //         prixTtc: 0
-
 //     }
 // }
 

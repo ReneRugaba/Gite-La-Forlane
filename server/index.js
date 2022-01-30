@@ -11,13 +11,46 @@ const handlerbar = require("handlebars")
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(cors())
+app.use('boostrap', express.static(__dirname + "/node_modules/bootstrap/dist/css"))
+
+// const object = {
+//     user: {
+//         nom: "nom",
+//         prenom: "prenom",
+//         email: "email",
+//         adresse: {
+//             numRue: 0,
+//             rue: "rue",
+//             codePostal: 0000,
+//             ville: "ville"
+//         }
+//     },
+//     transaction: {
+//         debut: "date de debut sejour",
+//         fin: "date de fin sejour",
+//         nombrePersonne: {
+//             enfant: 0,
+//             adulte: 0
+//         },
+//         service: {
+//             Drap: 0,
+//             serviceMenage: 0,
+//             taxSejour:1.10
+//         },
+//         prixUnJour: "prix unitaire sejour",
+//         prixHt: 0,
+//         prixTtc: 0
+
+//     }
+// }
 
 
 app.post("/stripe/charge", cors(), async (req, res) => {
-    console.log("stripe-routes.js 9 | route reached", req.body);
-    let { amount, id } = req.body;
-    console.log("stripe-routes.js 10 | amount and id", amount, id);
+    let { amount, id } = req.body; // destructuring pour recuper se qui se trouve dans le body
+
     try {
+
+        // requete vers stripe
         const payment = await stripe.paymentIntents.create({
             amount: amount,
             currency: "USD",
@@ -38,19 +71,21 @@ app.post("/stripe/charge", cors(), async (req, res) => {
             }
         });
 
-       
-        let source=fs.readFileSync(__dirname+'/templates/mailTest.html','utf8').toString()
-        let template = handlerbar.compile(source)
-        let htmltosend = template({name:"Marie"})
 
-        
-        
+        let source = fs.readFileSync(__dirname + '/templates/mailClient.handlerbars', 'utf8').toString()
+        let template = handlerbar.compile(source)
+        let htmltosend = template({
+            name: "Dorothée"
+        })
+
+
+
         // mail options
         let mailoptions = {
             from: process.env.EMAIL,
-            to: 'rugabarj@hotmail.fr',
+            to: 'rugabarj@gmail.com',
             subject: 'test',
-            html:htmltosend
+            html: htmltosend
         }
 
         // send mail

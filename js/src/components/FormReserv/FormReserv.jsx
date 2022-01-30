@@ -10,6 +10,7 @@ import City from './Inputs/City';
 import Phone from './Inputs/Phone';
 import Email from './Inputs/Email';
 import UserMessage from './Inputs/UserMessage';
+import prices from '../../data/prices';
 import { useEffect } from 'react/cjs/react.development';
 
 const FormReserv = ( props ) => {
@@ -93,7 +94,7 @@ const FormReserv = ( props ) => {
 
     const applyPrice = ( date ) => {
         const dateArr = date.split(' - ');
-        
+
         if ( dateArr.length === 2 ) {
             const startDate = dateArr[0];
             const startDateArr = startDate.split('/');
@@ -106,6 +107,12 @@ const FormReserv = ( props ) => {
             const endDateMonth = endDateArr[0]
             const endDateDay = endDateArr[1];
             const endDateYear = endDateArr[2]
+
+            /*
+
+                Work in progress
+
+            */
 
             console.log(startDateArr);
             console.log(endDateArr);
@@ -145,6 +152,7 @@ const FormReserv = ( props ) => {
             switch (key) {
                 case 'addressCompl':
                 case 'phone2':
+                case 'message':
                     isOptionalKey = true;
                 break;               
             }
@@ -156,9 +164,12 @@ const FormReserv = ( props ) => {
                     expectedInfo = false;
                     break;
                 }
-            } else if ( key === 'price' &&  userInfo.price < 0 ) { // In the next time we Replace 0 by expected price 
-                alert("Une erreur c'est produite")
-                expectedInfo = false;
+            } else if ( key === 'price') { // In the next time we Replace 0 by expected price 
+                if ( userInfo.price < 0 ) {
+
+                    alert("Une erreur c'est produite")
+                    expectedInfo = false;
+                }
                 break;
             }else if ( userInfo[key].length == 0 ) {
                 alert("Nous vous prions de bien vouloir nous fournir toutes les informations requises")

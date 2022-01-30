@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import InputError from '../InputError/InputError';
 
 const FullName = (props) => {
 

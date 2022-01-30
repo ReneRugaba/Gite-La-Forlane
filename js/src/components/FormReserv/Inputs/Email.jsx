@@ -17,25 +17,27 @@ const Email = ( props ) => {
     useEffect( () => {
 
         document.querySelector('.email')
-        .addEventListener('keyup', (e) => {
+        .addEventListener('change', (e) => {
             const inputTwoVal = document.querySelector('.emailConfirm').value;
-            if ( mailRegex.test( e.target.value ) && e.target.value === inputTwoVal ) {
+            if ( mailRegex.test( e.target.value )  ) { 
                 setEmailOneIsOk( true );
-                setEmailTwoIsOk( true )
-            } else if (mailRegex.test( e.target.value ) && e.target.value !== inputTwoVal) {
+            } 
+            else if (mailRegex.test( e.target.value ) && e.target.value == inputTwoVal) {
                 setEmailOneIsOk( true );
-                setEmailTwoIsOk( false );
-            } else if (!mailRegex.test( e.target.value )) {
+                setEmailTwoIsOk( true );
+            } 
+            else if (!mailRegex.test( e.target.value )) {
                 setEmailOneIsOk( false );
             } else {
                 setEmailOneIsOk( false );
                 setEmailTwoIsOk( false );
             }
             verifyInputs( e.target.value );
+            console.log(e.target.value);
         });
 
         document.querySelector('.emailConfirm')
-        .addEventListener('keyup', (e) => {
+        .addEventListener('change', (e) => {
             const inputOneVal = document.querySelector('.email').value;
             if ( (e.target.value === inputOneVal) &&  mailRegex.test( e.target.value ) ) {
                 setEmailOneIsOk( true );
@@ -44,43 +46,15 @@ const Email = ( props ) => {
                 setEmailTwoIsOk( false );
             }
             verifyInputs( e.target.value );
+            console.log(e.target.value);
         });
 
     },[emailOneIsOk, emailTwoIsOk])
-
-    // const checkEmailOne = ( e ) => {
-    //     const inputTwoVal = document.querySelector('.emailConfirm').value;
-    //     if ( mailRegex.test( e.target.value ) ) {
-    //         setEmailOneIsOk( true );
-    //         if ( e.target.value !== inputTwoVal ) {
-    //             setEmailTwoIsOk( false )
-    //             verifyInputs( e.target.value );
-    //         } else {
-    //             setEmailTwoIsOk( true )
-    //             verifyInputs( e.target.value );
-    //         }
-    //     } else {
-    //         setEmailOneIsOk( false );
-    //         verifyInputs( e.target.value );
-    //     }
-    // }
-    
-    // const checkEmailTwo = ( e ) => {
-    //     const inputOneVal = document.querySelector('.email').value;
-    //     if ( (e.target.value === inputOneVal) &&  mailRegex.test( e.target.value ) ) {
-    //         setEmailOneIsOk( true );
-    //         setEmailTwoIsOk( true );
-    //         verifyInputs( e.target.value );
-    //     } else {
-    //         setEmailTwoIsOk( false );
-    //     }
-    // }
 
     return (
         <>
             <label htmlFor="email">Email*</label> 
             <input 
-            // onInput={ checkEmailOne }
             autoComplete="none"
             type="email" 
             className={ emailOneIsOk ? 'email' : 'email wrong-input' }  
@@ -91,7 +65,6 @@ const Email = ( props ) => {
 
             <label htmlFor="emailConfirm">Confirmation Email*</label> 
             <input 
-            // onInput={ checkEmailTwo }
             autoComplete="none"
             type="email" 
             className={ ( emailOneIsOk && emailTwoIsOk ) ? 'emailConfirm' : 'emailConfirm wrong-input' }   

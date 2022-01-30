@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import InputError from '../InputError/InputError';
 import './Address.css';
 
 // ^(\d+) ?([A-Za-z](?= ))? (.*?) ([^ ]+?) ?((?<= )APT)? ?((?<= )\d*)?$
@@ -38,9 +37,7 @@ const Address = (props) => {
             name='address'    
             />
             <p className='error-container'>
-                { !addressComplete &&
-                    <InputError errorMessage='Veuillez saisir une adresse valide !'/>
-                }
+                { !addressComplete && 'Veuillez saisir une adresse valide !' }
             </p>
 
             <label htmlFor="addressComplement">Complément d'adresse</label>  
